@@ -1,0 +1,92 @@
+#R湲곗큹-1
+
+install.packages("AID")
+library(help=AID)
+help(package=AID)
+
+source('ADsP-script.R',encoding='utf-8')
+
+save(iris, file = "C:/DEV/r-workspaecs/iris.RData")
+load(file="C:/DEV/r-workspaecs/iris.RData")
+
+save.image(file = "C:/DEV/r-workspaecs/ALL.RData")
+load("C:/DEV/r-workspaecs/ALL.RData")
+
+sink("C:/DEV/r-workspaecs/output.txt")
+x <- 1
+y <- 2
+x
+y
+sink()
+
+library(ggplot2)
+p <- ggplot(ToothGrowth, aes(x=dose, y=len)) + geom_boxplot()
+p
+
+
+#코드를 이용하여 그래프 파일 저장하기
+pdf("C:/DEV/r-workspaecs/myplot.pdf") #pdf로 출력하기
+
+p <- ggplot(ToothGrowth, aes(x=dose, y=len)) + geom_boxplot() #그래프 그리기
+print(p) #그림 파일로 출력하기
+dev.off() #R과 그림파일 연결 끊기
+
+#
+#pdf("xh.pdf")
+#hist(rnorm(100))
+#dev.off()
+#
+
+#제2절 R기초-2
+1:5
+9:-2
+seq(from=0, to=20, b=2)
+
+
+rep(1,time=5)
+rep(1:4, each=2)
+
+A<-paste("a","b","c",sep="-") 
+paste(A, c("e","f"))
+paste(A,10,sep="")
+
+#R 프로그래밍 시 자주 하는 실수
+X< -pi
+
+sum<-1+2+3
++4+5
+sum
+
+n<-5;
+1:n+1
+1:(n+1)
+
+
+a<-c(9,10,11);
+mean(a)
+mean(9,10,11)
+
+
+#제4절 데이터 구조와 데이터 프레임-1
+V<-c(10,20,30); names(V)<-c("Moe","Larry","Curly")
+V["Larry"]
+
+
+#그 밖의 데이터 구조들
+pi
+length(pi)
+
+a<-1:9
+dim(a)<-c(3,3)
+a
+
+
+b<-1:12
+dim(b)<-c(2,3,2)
+b
+
+###
+install.packages("klaR")
+library(klaR)
+iris2<-iris[,c(1,3,5)]
+plineplot(Species ~., data=iris2, method="lda", x=iris[,4], xlab="Petal.Width")
